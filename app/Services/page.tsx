@@ -46,6 +46,7 @@ import {
 } from 'lucide-react';
 import Header from "../components/Header";
 import { useState } from 'react';
+import FooterSection from '../components/Footer';
 
 export default function ServicesPage() {
   const services = [
@@ -392,6 +393,7 @@ export default function ServicesPage() {
         {/* CTA Section */}
         <ServicesCTA />
       </div>
+      <FooterSection />
     </>
   );
 }
