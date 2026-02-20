@@ -1,11 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { 
-  Globe, 
-  Smartphone, 
-  ShoppingBag, 
-  Briefcase, 
+import {
+  Globe,
+  Smartphone,
+  ShoppingBag,
+  Briefcase,
   Palette,
   Code,
   BarChart,
@@ -14,8 +14,10 @@ import {
   ChevronRight,
   X,
   Filter,
-  Circle
+  Circle,
+  ArrowRight
 } from 'lucide-react';
+import Link from 'next/dist/client/link';
 import { useState, useRef, useEffect } from 'react';
 
 export default function PortfolioSection() {
@@ -101,8 +103,8 @@ export default function PortfolioSection() {
     },
   ];
 
-  const filteredProjects = selectedCategory === 'all' 
-    ? projects 
+  const filteredProjects = selectedCategory === 'all'
+    ? projects
     : projects.filter(project => project.category === selectedCategory);
 
   const handlePrevSlide = () => {
@@ -140,14 +142,14 @@ export default function PortfolioSection() {
 
   const handleTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
-    
+
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > 50;
     const isRightSwipe = distance < -50;
 
     if (isLeftSwipe) handleNextSlide();
     if (isRightSwipe) handlePrevSlide();
-    
+
     setTouchStart(null);
     setTouchEnd(null);
   };
@@ -156,7 +158,7 @@ export default function PortfolioSection() {
     if (isAutoPlaying) {
       autoPlayRef.current = setInterval(handleNextSlide, 5000);
     }
-    
+
     return () => {
       if (autoPlayRef.current) {
         clearInterval(autoPlayRef.current);
@@ -239,7 +241,7 @@ export default function PortfolioSection() {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
           >
-            Explore our collection of innovative projects that have transformed businesses 
+            Explore our collection of innovative projects that have transformed businesses
             and delivered exceptional results across various industries.
           </motion.p>
         </motion.div>
@@ -265,11 +267,10 @@ export default function PortfolioSection() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`flex items-center gap-3 px-6 py-3 rounded-xl whitespace-nowrap transition-all duration-300 ${
-                  selectedCategory === category.id
+                className={`flex items-center gap-3 px-6 py-3 rounded-xl whitespace-nowrap transition-all duration-300 ${selectedCategory === category.id
                     ? 'bg-gradient-to-r from-red-500 to-red-600 text-white shadow-lg shadow-red-500/25'
                     : 'bg-white/80 dark:bg-black/80 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 text-gray-700 dark:text-gray-300 hover:bg-red-50 dark:hover:bg-red-900/20'
-                }`}
+                  }`}
               >
                 {category.icon}
                 <span className="font-semibold">{category.label}</span>
@@ -286,7 +287,7 @@ export default function PortfolioSection() {
           className="relative mb-16"
         >
           {/* Carousel Container */}
-          <div 
+          <div
             className="relative overflow-hidden rounded-3xl bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 shadow-2xl"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
@@ -299,7 +300,7 @@ export default function PortfolioSection() {
             >
               <ChevronLeft className="w-6 h-6 text-red-600 dark:text-red-400 group-hover:scale-110 transition-transform" />
             </button>
-            
+
             <button
               onClick={handleNextSlide}
               className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/90 dark:bg-black/90 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 shadow-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-300 group"
@@ -331,21 +332,20 @@ export default function PortfolioSection() {
                 <motion.div
                   key={project.id}
                   initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ 
+                  animate={{
                     opacity: currentSlide === index ? 1 : 0,
                     scale: currentSlide === index ? 1 : 0.9,
                     x: `${(index - currentSlide) * 100}%`
                   }}
                   transition={{ duration: 0.5, ease: "easeInOut" }}
-                  className={`absolute inset-0 flex items-center justify-center p-8 ${
-                    currentSlide === index ? 'pointer-events-auto' : 'pointer-events-none'
-                  }`}
+                  className={`absolute inset-0 flex items-center justify-center p-8 ${currentSlide === index ? 'pointer-events-auto' : 'pointer-events-none'
+                    }`}
                 >
                   <div className="max-w-6xl w-full h-full flex flex-col lg:flex-row gap-8 items-center">
                     {/* Project Image/Color Area */}
                     <div className={`lg:w-1/2 h-full ${project.imageColor} rounded-2xl relative overflow-hidden`}>
                       <div className="absolute inset-0 bg-gradient-to-tr from-black/10 via-transparent to-transparent" />
-                      
+
                       {/* Animated background elements */}
                       <motion.div
                         animate={{ rotate: 360 }}
@@ -357,14 +357,14 @@ export default function PortfolioSection() {
                         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
                         className="absolute -bottom-20 -left-20 w-64 h-64 border border-red-200/20 dark:border-red-600/8 rounded-full"
                       />
-                      
+
                       {/* Category Badge */}
                       <div className="absolute top-6 left-6">
                         <span className={`px-4 py-2 rounded-full text-sm font-semibold bg-gradient-to-r ${project.color} text-white shadow-lg`}>
                           {categories.find(c => c.id === project.category)?.label}
                         </span>
                       </div>
-                      
+
                       {/* Stats overlay */}
                       <div className="absolute bottom-6 left-6 right-6">
                         <div className="grid grid-cols-3 gap-4">
@@ -432,16 +432,14 @@ export default function PortfolioSection() {
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`p-1 transition-all duration-300 ${
-                    currentSlide === index ? 'scale-125' : 'opacity-50 hover:opacity-75'
-                  }`}
-                >
-                  <div 
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      currentSlide === index 
-                        ? 'bg-gradient-to-r from-red-500 to-red-600' 
-                        : 'bg-red-300 dark:bg-red-700'
+                  className={`p-1 transition-all duration-300 ${currentSlide === index ? 'scale-125' : 'opacity-50 hover:opacity-75'
                     }`}
+                >
+                  <div
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${currentSlide === index
+                        ? 'bg-gradient-to-r from-red-500 to-red-600'
+                        : 'bg-red-300 dark:bg-red-700'
+                      }`}
                   />
                 </button>
               ))}
@@ -456,36 +454,11 @@ export default function PortfolioSection() {
           </div>
         </motion.div>
 
-        {/* Call to Action */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-          className="text-center"
-        >
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-            Ready to start your next project?
-          </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="group px-8 py-4 rounded-xl bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold shadow-lg shadow-red-500/25 hover:shadow-xl hover:shadow-red-500/35 transition-all duration-300 flex items-center gap-3 mx-auto"
-          >
-            <span>Start Your Project</span>
-            <motion.span
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="inline-block"
-            >
-              <ExternalLink className="w-5 h-5" />
-            </motion.span>
-          </motion.button>
-        </motion.div>
       </div>
 
       {/* Project Modal */}
       {selectedProject && (
-        <div 
+        <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
           onClick={handleModalClose}
         >
@@ -517,7 +490,7 @@ export default function PortfolioSection() {
                   </p>
                 </div>
               </div>
-              
+
               <p className="text-gray-600 dark:text-gray-300 text-lg mb-6">
                 {projects.find(p => p.id === selectedProject)?.description}
               </p>

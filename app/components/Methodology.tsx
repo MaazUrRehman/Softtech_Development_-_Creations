@@ -1,12 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { 
-  Target, 
-  Users, 
-  Lightbulb, 
-  Zap, 
-  CheckCircle, 
+import {
+  Target,
+  Users,
+  Lightbulb,
+  Zap,
+  CheckCircle,
   BarChart,
   RefreshCw,
   Shield,
@@ -108,7 +108,6 @@ export default function Methodology() {
   ];
 
   const stats = [
-    { label: "Projects", value: "250+", icon: <Rocket className="w-5 h-5" /> },
     { label: "Satisfaction", value: "98%", icon: <Heart className="w-5 h-5" /> },
     { label: "On Time", value: "95%", icon: <Clock className="w-5 h-5" /> },
     { label: "Growth", value: "40% YoY", icon: <TrendingUp className="w-5 h-5" /> }
@@ -155,32 +154,35 @@ export default function Methodology() {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="p-4 rounded-xl bg-white/80 dark:bg-black/80 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30"
-            >
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-red-50 dark:bg-red-900/20">
-                  <div className="text-red-600 dark:text-red-400">
-                    {stat.icon}
+        <div className="container px-50">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-12">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -5 }}
+                className="p-4  rounded-xl bg-white/80 dark:bg-black/80 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30"
+              >
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="p-2 rounded-lg bg-red-50 dark:bg-red-900/20">
+                    <div className="text-red-600 dark:text-red-400">
+                      {stat.icon}
+                    </div>
+                  </div>
+                  <div className="text-2xl font-bold text-black  dark:text-white">
+                    {stat.value}
                   </div>
                 </div>
-                <div className="text-2xl font-bold text-black dark:text-white">
-                  {stat.value}
+                <div className="text-sm text-gray-600 dark:text-gray-400">
+                  {stat.label}
                 </div>
-              </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
+
 
         {/* Process Steps */}
         <div className="mb-16">
@@ -199,11 +201,10 @@ export default function Methodology() {
                 onClick={() => setActiveStep(activeStep === step.id ? null : step.id)}
                 className="cursor-pointer"
               >
-                <div className={`p-6 rounded-2xl border transition-all duration-300 ${
-                  activeStep === step.id
+                <div className={`p-6 rounded-2xl border transition-all duration-300 ${activeStep === step.id
                     ? 'border-red-300 dark:border-red-700 bg-gradient-to-br from-white to-red-50/50 dark:from-black dark:to-red-900/10 shadow-lg'
                     : 'border-red-100/50 dark:border-red-900/30 bg-white/80 dark:bg-black/80 backdrop-blur-sm hover:border-red-200 dark:hover:border-red-800'
-                }`}>
+                  }`}>
                   <div className="flex items-start justify-between mb-4">
                     <div className={`p-3 rounded-xl bg-gradient-to-br ${step.color}`}>
                       <div className="text-white">
@@ -288,33 +289,7 @@ export default function Methodology() {
           </div>
         </div>
 
-        {/* CTA */}
-        <div className="text-center">
-          <div className="inline-block p-8 rounded-2xl bg-gradient-to-r from-red-50 to-red-100/50 dark:from-red-900/10 dark:to-red-800/10 border border-red-200/50 dark:border-red-800/20">
-            <h3 className="text-2xl font-bold text-black dark:text-white mb-4">
-              Ready to Start?
-            </h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-6">
-              Let's apply our proven methodology to your project
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 rounded-lg bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold shadow-lg shadow-red-500/25 hover:shadow-xl hover:shadow-red-500/35 transition-all duration-300"
-              >
-                Start Your Project
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 rounded-lg bg-white/80 dark:bg-black/80 backdrop-blur-sm border border-red-200 dark:border-red-800/30 text-gray-700 dark:text-gray-300 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-300"
-              >
-                Learn More
-              </motion.button>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </section>
   );

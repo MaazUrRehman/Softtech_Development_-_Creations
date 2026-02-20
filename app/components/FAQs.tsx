@@ -96,7 +96,6 @@ export default function FAqs() {
                             {faq.answer}
                           </p>
                         </div>
-                        <ChevronRight className="w-5 h-5 text-red-600 dark:text-red-400 transform group-hover:translate-x-2 transition-transform" />
                       </div>
                     </div>
                   </motion.div>

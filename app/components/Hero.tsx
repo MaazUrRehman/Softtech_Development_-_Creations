@@ -383,8 +383,7 @@ export default function HeroSection() {
                   className="w-48 h-48 bg-gradient-to-br from-red-600 to-red-700 rounded-full flex flex-col items-center justify-center text-white shadow-2xl shadow-red-600/30"
                 >
                   <Zap className="w-16 h-16 mb-4" />
-                  <div className="text-2xl font-bold">SOFTTECH</div>
-                  <div className="text-sm opacity-90">Since 2015</div>
+                  <div className="text-2xl font-bold mb-4">SOFTTECH</div>
                 </motion.div>
               </div>
             </div>

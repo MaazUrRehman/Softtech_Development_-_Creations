@@ -231,14 +231,6 @@ export default function ServicesSection() {
                   {service.description}
                 </p>
 
-                {/* CTA Button */}
-                <motion.button
-                  whileHover={{ x: 5 }}
-                  className="flex items-center gap-2 text-red-600 dark:text-red-400 font-semibold group-hover:text-red-700 dark:group-hover:text-red-300 transition-colors"
-                >
-                  <span>Learn More</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </motion.button>
 
                 {/* Hover Border Effect */}
                 <motion.div

@@ -113,43 +113,14 @@ export default function Blogs() {
                       {post.excerpt}
                     </p>
                     
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                        <Clock className="w-4 h-4" />
-                        {post.readTime}
-                      </div>
-                      <motion.button
-                        whileHover={{ x: 5 }}
-                        className="flex items-center gap-1 text-red-600 dark:text-red-400 font-medium group"
-                      >
-                        Read More
-                        <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-                      </motion.button>
-                    </div>
+                    
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-center"
-          >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 rounded-xl bg-white/80 dark:bg-black/80 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 text-gray-700 dark:text-gray-300 font-semibold hover:border-red-200 dark:hover:border-red-800 transition-all duration-300"
-            >
-              <span className="flex items-center justify-center gap-2">
-                View All Blog Posts
-                <BookOpen className="w-5 h-5 text-red-600 dark:text-red-400" />
-              </span>
-            </motion.button>
-          </motion.div>
+         
         </div>
       </section>
   );

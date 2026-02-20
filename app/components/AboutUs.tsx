@@ -145,7 +145,7 @@ export default function AboutUs() {
             >
               <span className="block text-black dark:text-white">We Craft Digital</span>
               <span className="block bg-gradient-to-r from-red-600 via-red-700 to-red-800 bg-clip-text text-transparent">
-                Excellence Since 2015
+                Excellence 
               </span>
             </motion.h1>
 
@@ -166,32 +166,8 @@ export default function AboutUs() {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 rounded-xl bg-gradient-to-r from-red-600 to-red-800 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group"
-              >
-                <span className="flex items-center justify-center gap-2">
-                  Start Your Project
-                  <motion.span
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  >
-                    <ArrowRight className="w-5 h-5" />
-                  </motion.span>
-                </span>
-              </motion.button>
               
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 rounded-xl bg-white/80 dark:bg-black/80 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 text-gray-700 dark:text-gray-300 font-semibold hover:border-red-200 dark:hover:border-red-800 transition-all duration-300"
-              >
-                <span className="flex items-center justify-center gap-2">
-                  Meet Our Team
-                  <Users className="w-5 h-5 text-red-600 dark:text-red-400" />
-                </span>
-              </motion.button>
+              
             </motion.div>
           </motion.div>
 
@@ -205,7 +181,7 @@ export default function AboutUs() {
             {[
               { value: "200+", label: "Projects Completed", icon: <Target className="w-6 h-6" />, color: "from-red-500 to-red-600" },
               { value: "150+", label: "Happy Clients", icon: <Users className="w-6 h-6" />, color: "from-red-600 to-red-700" },
-              { value: "8+", label: "Years Experience", icon: <Clock className="w-6 h-6" />, color: "from-red-700 to-red-800" },
+              { value: "10+", label: "Years Experience", icon: <Clock className="w-6 h-6" />, color: "from-red-700 to-red-800" },
               { value: "99%", label: "Success Rate", icon: <Star className="w-6 h-6" />, color: "from-red-800 to-red-900" },
             ].map((stat, index) => (
               <motion.div
@@ -424,76 +400,7 @@ export default function AboutUs() {
       </section>
 
 
-      {/* Final CTA Section */}
-      <section className="relative py-24 overflow-hidden bg-gradient-to-b from-white via-red-50/5 to-red-50/10 dark:from-black dark:via-red-950/5 dark:to-red-950/10">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute inset-0" style={{
-              backgroundImage: `linear-gradient(to right, #ef4444 1px, transparent 1px),
-                               linear-gradient(to bottom, #ef4444 1px, transparent 1px)`,
-              backgroundSize: '50px 50px'
-            }} />
-          </div>
-        </div>
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.div
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              transition={{ duration: 0.3 }}
-              className="inline-flex p-4 rounded-xl bg-gradient-to-br from-red-500/10 to-red-600/10 border border-red-200/30 dark:border-red-800/30 mb-6"
-            >
-              <Rocket className="w-8 h-8 text-red-600 dark:text-red-400" />
-            </motion.div>
-            
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              <span className="block text-black dark:text-white">Ready to Start Your</span>
-              <span className="block bg-gradient-to-r from-red-600 via-red-700 to-red-800 bg-clip-text text-transparent">
-                Digital Journey?
-              </span>
-            </h2>
-            
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto">
-              Let&apos;s work together to bring your vision to life with cutting-edge 
-              technology, creative design, and strategic thinking.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 rounded-xl bg-gradient-to-r from-red-600 to-red-800 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group"
-              >
-                <span className="flex items-center justify-center gap-2">
-                  Start a Project
-                  <motion.span
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  >
-                    <ArrowRight className="w-5 h-5" />
-                  </motion.span>
-                </span>
-              </motion.button>
-
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 rounded-xl bg-white/80 dark:bg-black/80 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 text-gray-700 dark:text-gray-300 font-semibold hover:border-red-200 dark:hover:border-red-800 transition-all duration-300"
-              >
-                <span className="flex items-center justify-center gap-2">
-                  Schedule a Call
-                  <Phone className="w-5 h-5 text-red-600 dark:text-red-400" />
-                </span>
-              </motion.button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      
     </div>
   );
 }

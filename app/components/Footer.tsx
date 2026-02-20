@@ -76,25 +76,25 @@ export default function FooterSection() {
     {
       icon: <Phone className="w-5 h-5" />,
       title: 'Phone',
-      value: '+1 (555) 123-4567',
-      href: 'tel:+15551234567',
+      value: '+92 319 6876024',
+      href: 'tel:+92 319 6876024',
     },
     {
       icon: <Mail className="w-5 h-5" />,
       title: 'Email',
-      value: 'hello@softtech.com',
-      href: 'mailto:hello@softtech.com',
+      value: 'softtech732@gmail.com',
+      href: 'mailto:softtech732@gmail.com',
     },
     {
       icon: <MapPin className="w-5 h-5" />,
       title: 'Location',
-      value: 'San Francisco, CA',
+      value: 'Karachi, Pakistan',
       href: '#',
     },
     {
       icon: <Clock className="w-5 h-5" />,
       title: 'Working Hours',
-      value: 'Mon - Fri: 9:00 - 18:00',
+      value: '24/7 Support Available',
       href: '#',
     },
   ];
@@ -345,7 +345,7 @@ export default function FooterSection() {
         </div>
 
         {/* Legal Links */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.3, duration: 0.6 }}
@@ -360,7 +360,7 @@ export default function FooterSection() {
               {link}
             </a>
           ))}
-        </motion.div>
+        </motion.div> */}
       </div>
     </footer>
   );

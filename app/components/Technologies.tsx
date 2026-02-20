@@ -76,6 +76,10 @@ export default function TechnologiesSection() {
       { name: 'Python', icon: '🐍', level: 87, color: 'from-yellow-500 to-blue-600' },
       { name: 'MySQL', icon: '🐬', level: 89, color: 'from-blue-400 to-blue-700' },
       { name: 'MongoDB', icon: '🍃', level: 86, color: 'from-green-500 to-green-700' },
+      { name: 'Flutter', icon: '🦋', level: 91, color: 'from-sky-400 to-blue-600' },
+      { name: 'React Native', icon: '⚛️', level: 89, color: 'from-cyan-400 to-blue-500' },
+      { name: 'Firebase', icon: '🔥', level: 88, color: 'from-yellow-400 to-orange-600' },
+      { name: '.NET', icon: '🟣', level: 87, color: 'from-purple-500 to-indigo-700' },
     ],
     design: [
       { name: 'Adobe Photoshop', icon: 'PS', level: 94, color: 'from-blue-400 to-indigo-600' },
@@ -96,9 +100,9 @@ export default function TechnologiesSection() {
   };
 
   const categories: Category[] = [
-    { id: 'all', label: 'All Technologies', icon: <Layers className="w-5 h-5" />, count: 24 },
+    { id: 'all', label: 'All Technologies', icon: <Layers className="w-5 h-5" />, count: 28 },
     { id: 'frontend', label: 'Frontend', icon: <Globe className="w-5 h-5" />, count: 6 },
-    { id: 'backend', label: 'Backend', icon: <Server className="w-5 h-5" />, count: 6 },
+    { id: 'backend', label: 'Backend', icon: <Server className="w-5 h-5" />, count: 10 },
     { id: 'design', label: 'Design & Video', icon: <Palette className="w-5 h-5" />, count: 6 },
     { id: 'marketing', label: 'Marketing', icon: <Megaphone className="w-5 h-5" />, count: 6 },
   ];
@@ -387,30 +391,9 @@ export default function TechnologiesSection() {
                   </div>
                 </div>
 
-                {/* Projects Count */}
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/30 mx-auto"
-                >
-                  <span className="text-xs font-medium text-red-700 dark:text-red-300">
-                    {activeCategory === 'design' || activeCategory === 'marketing' 
-                      ? `${Math.floor(Math.random() * 100) + 50}+ Projects`
-                      : `${Math.floor(Math.random() * 50) + 10}+ Projects`
-                    }
-                  </span>
-                </motion.div>
               </div>
 
-              {/* Hover Arrow */}
-              <motion.div
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-2 -right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              >
-                <div className="p-2 rounded-full bg-gradient-to-br from-red-500 to-red-600">
-                  <ArrowRight className="w-4 h-4 text-white" />
-                </div>
-              </motion.div>
+              
             </motion.div>
           ))}
         </motion.div>
@@ -427,55 +410,6 @@ export default function TechnologiesSection() {
           {/* Card Background Glow */}
           <div className="absolute inset-0 bg-gradient-to-r from-red-500/5 via-red-600/5 to-red-700/5 rounded-3xl blur-2xl" />
 
-          <div className="relative p-8 rounded-3xl bg-white/80 dark:bg-black/80 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 shadow-xl">
-            <div className="text-center mb-8">
-              <motion.div
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ duration: 0.3 }}
-                className="inline-flex p-4 rounded-xl bg-gradient-to-br from-red-500/10 to-red-600/10 border border-red-200/30 dark:border-red-800/30 mb-4"
-              >
-                <Sparkles className="w-8 h-8 text-red-600 dark:text-red-400" />
-              </motion.div>
-              
-              <h3 className="text-3xl font-bold text-black dark:text-white mb-4">
-                Ready for a Complete Digital Solution?
-              </h3>
-              
-              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                From development and design to marketing, we provide everything you need 
-                to build, launch, and grow your digital presence.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 rounded-xl bg-gradient-to-r from-red-600 to-red-800 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group"
-              >
-                <span className="flex items-center justify-center gap-2">
-                  Get Free Consultation
-                  <motion.span
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  >
-                    <ArrowRight className="w-5 h-5" />
-                  </motion.span>
-                </span>
-              </motion.button>
-
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 rounded-xl bg-white/80 dark:bg-black/80 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 text-gray-700 dark:text-gray-300 font-semibold hover:border-red-200 dark:hover:border-red-800 transition-all duration-300"
-              >
-                <span className="flex items-center justify-center gap-2">
-                  View Portfolio
-                  <Palette className="w-5 h-5 text-red-600 dark:text-red-400" />
-                </span>
-              </motion.button>
-            </div>
-          </div>
         </motion.div>
       </div>
 

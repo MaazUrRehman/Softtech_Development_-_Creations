@@ -23,7 +23,7 @@ const reasons = [
     icon: <ShieldCheck className="w-8 h-8" />,
     title: "Proven Track Record",
     description: "With 250+ successful projects and 99% client satisfaction, we deliver consistent results.",
-    stats: "250+ Projects",
+    stats: "200+ Projects",
     color: "from-red-500 to-red-600",
     delay: 0.1
   },
@@ -48,7 +48,7 @@ const reasons = [
     title: "Expert Team",
     description: "50+ skilled professionals with diverse expertise across all digital domains.",
     stats: "50+ Experts",
-    color: "from-red-800 to-red-900",
+    color: "from-red-800 to-red-700",
     delay: 0.4
   },
   {
@@ -56,7 +56,7 @@ const reasons = [
     title: "On-Time Delivery",
     description: "We respect deadlines and deliver projects promptly without compromising quality.",
     stats: "100% On Time",
-    color: "from-red-900 to-red-950",
+    color: "from-red-900 to-red-600",
     delay: 0.5
   },
   {
@@ -64,7 +64,7 @@ const reasons = [
     title: "Growth-Focused",
     description: "Our solutions are designed to scale and grow with your business needs.",
     stats: "Scalable",
-    color: "from-red-950 to-black",
+    color: "from-red-950 to-red-500",
     delay: 0.6
   }
 ];
@@ -97,7 +97,7 @@ export default function WhyChooseUsSection() {
 
   const stats = [
     { value: "99%", label: "Client Satisfaction", icon: <Star className="w-5 h-5" /> },
-    { value: "250+", label: "Projects Completed", icon: <CheckCircle className="w-5 h-5" /> },
+    { value: "200+", label: "Projects Completed", icon: <CheckCircle className="w-5 h-5" /> },
     { value: "50+", label: "Global Clients", icon: <Users className="w-5 h-5" /> },
     { value: "24/7", label: "Support", icon: <Clock className="w-5 h-5" /> },
   ];
@@ -110,7 +110,7 @@ export default function WhyChooseUsSection() {
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
             backgroundImage: `linear-gradient(to right, #ef4444 1px, transparent 1px),
-                             linear-gradient(to bottom, #ef4444 1px, transparent 1px)`,
+                             linear-gradient(to bottom, #fd6969 1px, transparent 1px)`,
             backgroundSize: '50px 50px'
           }} />
         </div>
@@ -303,7 +303,7 @@ export default function WhyChooseUsSection() {
               whileHover={{ y: -5 }}
               className="relative group"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 to-red-700/5 dark:from-red-600/20 dark:to-red-700/10 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 to-red-700/5 dark:from-red-600/10 dark:to-red-700/10 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500" />
               <div className="relative p-8 rounded-3xl bg-gradient-to-br from-red-50/50 to-white/50 dark:from-red-950/30 dark:to-black/50 backdrop-blur-sm border border-red-200/30 dark:border-red-800/30 shadow-2xl">
                 <div className="flex items-center gap-4 mb-6">
                   <motion.div
@@ -408,49 +408,3 @@ export default function WhyChooseUsSection() {
 
 
 
-
-{/* Testimonials */}
-            // <motion.div
-            //   initial={{ opacity: 0, y: 20 }}
-            //   animate={isInView ? { opacity: 1, y: 0 } : {}}
-            //   transition={{ delay: 0.6, duration: 0.6 }}
-            //   className="relative group"
-            // >
-            //   <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-red-600/5 dark:from-red-500/10 dark:to-red-600/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300" />
-            //   <div className="relative p-8 rounded-2xl bg-white/80 dark:bg-black/80 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 shadow-lg">
-            //     <div className="flex items-center gap-3 mb-6">
-            //       <Heart className="w-6 h-6 text-red-600 dark:text-red-400" />
-            //       <h3 className="text-xl font-bold text-black dark:text-white">Client Testimonials</h3>
-            //     </div>
-                
-            //     <div className="space-y-6">
-            //       {testimonials.map((testimonial, index) => (
-            //         <motion.div
-            //           key={index}
-            //           initial={{ opacity: 0, y: 20 }}
-            //           animate={isInView ? { opacity: 1, y: 0 } : {}}
-            //           transition={{ delay: 0.7 + index * 0.2, duration: 0.6 }}
-            //           whileHover={{ x: 5 }}
-            //           className="p-4 rounded-xl bg-red-50/30 dark:bg-red-950/10 border border-red-100/30 dark:border-red-900/20"
-            //         >
-            //           <div className="flex items-center gap-1 mb-3">
-            //             {[...Array(testimonial.rating)].map((_, i) => (
-            //               <Star key={i} className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-            //             ))}
-            //           </div>
-            //           <p className="text-gray-700 dark:text-gray-300 italic mb-3">
-            //             &ldquo;{testimonial.content}&rdquo;
-            //           </p>
-            //           <div>
-            //             <div className="font-semibold text-black dark:text-white">
-            //               {testimonial.name}
-            //             </div>
-            //             <div className="text-sm text-gray-600 dark:text-gray-400">
-            //               {testimonial.role}
-            //             </div>
-            //           </div>
-            //         </motion.div>
-            //       ))}
-            //     </div>
-            //   </div>
-            // </motion.div>

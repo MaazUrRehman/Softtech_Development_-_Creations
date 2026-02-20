@@ -48,7 +48,7 @@ export default function HowWeWork() {
             icon: <TestTube className="w-6 h-6" />,
             title: "Testing & Quality",
             description: "Comprehensive testing to ensure flawless performance across all devices and platforms.",
-            color: "from-red-800 to-red-900",
+            color: "from-red-800 to-red-700",
             features: ["Unit Testing", "Integration Testing", "Performance Testing", "Security Audit"]
         },
         {
@@ -56,7 +56,7 @@ export default function HowWeWork() {
             icon: <Rocket className="w-6 h-6" />,
             title: "Deployment",
             description: "Smooth deployment with continuous integration and delivery pipelines for seamless launches.",
-            color: "from-red-900 to-red-950",
+            color: "from-red-900 to-red-600",
             features: ["CI/CD Pipeline", "Server Configuration", "Domain Setup", "SSL Certification"]
         },
         {
@@ -64,7 +64,7 @@ export default function HowWeWork() {
             icon: <RefreshCw className="w-6 h-6" />,
             title: "Maintenance & Support",
             description: "Ongoing support, updates, and optimization to keep your solution performing at its best.",
-            color: "from-red-950 to-red-900",
+            color: "from-red-950 to-red-500",
             features: ["Regular Updates", "Performance Monitoring", "Technical Support", "Feature Enhancements"]
         }
     ];
@@ -263,7 +263,7 @@ export default function HowWeWork() {
                                                     className="flex items-center gap-2"
                                                 >
                                                     <div className={`p-1 rounded-full bg-gradient-to-br ${step.color} bg-opacity-10`}>
-                                                        <CheckCircle className="w-4 h-4 text-red-600 dark:text-red-400" />
+                                                        <CheckCircle className="w-4 h-4 text-red-600 dark:text-red-200" />
                                                     </div>
                                                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                                                         {feature}
@@ -272,18 +272,7 @@ export default function HowWeWork() {
                                             ))}
                                         </div>
 
-                                        {/* Progress Arrow */}
-                                        {index < steps.length - 1 && (
-                                            <motion.div
-                                                animate={{ x: [0, 5, 0] }}
-                                                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                                                className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 hidden lg:block"
-                                            >
-                                                <div className={`p-2 rounded-full bg-gradient-to-br ${step.color} bg-opacity-10 border border-red-200/30 dark:border-red-800/30`}>
-                                                    <ArrowRight className="w-5 h-5 text-red-600 dark:text-red-400" />
-                                                </div>
-                                            </motion.div>
-                                        )}
+                                        
                                     </div>
                                 </motion.div>
                             </motion.div>

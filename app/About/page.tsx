@@ -6,7 +6,6 @@ import FooterSection from "../components/Footer";
 import Header from "../components/Header";
 import Journey from "../components/Journey";
 import Methodology from "../components/Methodology";
-import Team from "../components/Team";
 import TestimonialsSection from "../components/Testimonials";
 
 export default function AboutPage() {
@@ -16,7 +15,6 @@ export default function AboutPage() {
         <AboutUs />
         <Journey />
         <Methodology />
-        <Team />
         <Achievements />
         <TestimonialsSection />
         <Blogs />

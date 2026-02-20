@@ -272,7 +272,7 @@ export default function Achievements() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -282,96 +282,14 @@ export default function Achievements() {
           >
             <Trophy className="w-4 h-4 text-red-600 dark:text-red-400" />
             <span className="text-sm font-semibold text-red-700 dark:text-red-300">
-              Our Journey & Success
+              Our Success
             </span>
           </motion.div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
-          >
-            <span className="block text-black dark:text-white">Milestones &</span>
-            <span className="block bg-gradient-to-r from-red-600 via-red-700 to-red-800 bg-clip-text text-transparent">
-              Achievements
-            </span>
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
-          >
-            Celebrating years of excellence, innovation, and client success that have defined 
-            our journey in the digital world.
-          </motion.p>
+          
         </motion.div>
 
-        {/* Stats Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5 + stat.delay, duration: 0.6 }}
-              whileHover={{ 
-                scale: 1.05,
-                y: -5,
-                transition: { duration: 0.2 }
-              }}
-              className="relative group"
-            >
-              {/* Glow Effect */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} rounded-2xl opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-300`} />
-
-              <div className="relative p-8 rounded-2xl bg-white/80 dark:bg-black/80 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 shadow-lg text-center">
-                {/* Animated Counter */}
-                <div className="flex items-center justify-center gap-4 mb-4">
-                  <motion.div
-                    whileHover={{ rotate: 15, scale: 1.1 }}
-                    transition={{ duration: 0.3 }}
-                    className={`p-3 rounded-xl bg-gradient-to-br ${stat.color} bg-opacity-10`}
-                  >
-                    <div className="text-red-600 dark:text-red-400">
-                      {stat.icon}
-                    </div>
-                  </motion.div>
-                  
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6 + index * 0.1, duration: 0.8 }}
-                    className="text-4xl font-bold bg-gradient-to-br from-red-600 to-red-800 bg-clip-text text-transparent"
-                  >
-                    {stat.value}
-                  </motion.div>
-                </div>
-
-                <h3 className="text-xl font-bold text-black dark:text-white mb-2">
-                  {stat.label}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400 text-sm">
-                  {stat.description}
-                </p>
-
-                {/* Progress Pulse */}
-                <motion.div
-                  animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  className={`absolute top-4 right-4 w-2 h-2 rounded-full bg-gradient-to-br ${stat.color}`}
-                />
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+        
 
         
 
@@ -380,22 +298,12 @@ export default function Achievements() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="mb-16"
+          className="mb-14"
         >
           <div className="text-center mb-10">
-            <motion.div
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              transition={{ duration: 0.3 }}
-              className="inline-flex p-4 rounded-xl bg-gradient-to-br from-red-500/10 to-red-600/10 border border-red-200/30 dark:border-red-800/30 mb-4"
-            >
-              <Award className="w-8 h-8 text-red-600 dark:text-red-400" />
-            </motion.div>
             <h3 className="text-3xl font-bold text-black dark:text-white mb-4">
               Awards & Recognition
             </h3>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Celebrating excellence through industry recognition and awards.
-            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

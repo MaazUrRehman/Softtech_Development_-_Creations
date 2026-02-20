@@ -29,7 +29,7 @@ export default function PricePlanSection() {
       id: 'starter',
       name: 'Starter',
       description: 'Perfect for small projects and startups',
-      icon: <Star className="w-6 h-6" />,
+      icon: <Star className="w-6 h-6 text-white" />,
       color: 'from-red-500 to-red-600',
       monthlyPrice: 29,
       annualPrice: 24,
@@ -52,7 +52,7 @@ export default function PricePlanSection() {
       id: 'professional',
       name: 'Professional',
       description: 'Ideal for growing businesses',
-      icon: <Zap className="w-6 h-6" />,
+      icon: <Zap className="w-6 h-6 text-white" />,
       color: 'from-red-600 to-red-700',
       monthlyPrice: 79,
       annualPrice: 65,
@@ -75,7 +75,7 @@ export default function PricePlanSection() {
       id: 'enterprise',
       name: 'Enterprise',
       description: 'For large scale businesses',
-      icon: <Crown className="w-6 h-6" />,
+      icon: <Crown className="w-6 h-6 text-white" />,
       color: 'from-red-700 to-red-800',
       monthlyPrice: 199,
       annualPrice: 165,
@@ -342,24 +342,7 @@ export default function PricePlanSection() {
                       </div>
                     </div>
 
-                    {/* Price */}
-                    <div className="mb-6">
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-4xl md:text-5xl font-bold text-black dark:text-white">
-                          ${getPrice(plan.monthlyPrice, plan.annualPrice)}
-                        </span>
-                        <span className="text-gray-600 dark:text-gray-400">/month</span>
-                      </div>
-                      {billingCycle === 'annual' && (
-                        <motion.div
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          className="text-green-600 dark:text-green-400 text-sm mt-2"
-                        >
-                          Save ${(plan.monthlyPrice - plan.annualPrice) * 12} annually
-                        </motion.div>
-                      )}
-                    </div>
+                    
 
                     {/* CTA Button */}
                     <motion.button

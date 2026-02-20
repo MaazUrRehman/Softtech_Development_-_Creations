@@ -27,7 +27,7 @@ export default function TestimonialsSection() {
       name: "Alexandra Chen",
       role: "CEO, TechNova Inc.",
       content: "Working with this team transformed our digital presence. Their innovative approach and attention to detail exceeded our expectations at every turn. The results speak for themselves.",
-      rating: 5,
+      rating: 4,
       company: "TechNova",
       project: "Enterprise Platform",
       stats: { growth: "300%", satisfaction: "98%", timeline: "-30%" },
@@ -49,7 +49,7 @@ export default function TestimonialsSection() {
       name: "Sophia Williams",
       role: "Marketing Director, GlobalBrands",
       content: "From concept to execution, the team was professional, creative, and results-driven. Our engagement metrics have never been better. Highly recommended!",
-      rating: 5,
+      rating: 4,
       company: "GlobalBrands",
       project: "Brand Strategy",
       stats: { engagement: "250%", roi: "450%", reach: "3M+" },
@@ -60,7 +60,7 @@ export default function TestimonialsSection() {
       name: "James Wilson",
       role: "Founder, StartupXYZ",
       content: "As a startup, we needed a partner who understood our vision and constraints. They delivered beyond our expectations within budget and timeline. Exceptional!",
-      rating: 5,
+      rating: 4,
       company: "StartupXYZ",
       project: "MVP Development",
       stats: { funding: "$2.5M", users: "100K", valuation: "10x" },
@@ -82,7 +82,7 @@ export default function TestimonialsSection() {
       name: "David Kim",
       role: "Operations Director, LogisticsPro",
       content: "Their solution streamlined our operations and reduced costs by 40%. The team was professional, responsive, and delivered exactly what we needed.",
-      rating: 5,
+      rating: 4,
       company: "LogisticsPro",
       project: "Operations System",
       stats: { efficiency: "65%", cost: "-40%", delivery: "99%" },
@@ -90,12 +90,7 @@ export default function TestimonialsSection() {
     }
   ];
 
-  const stats = [
-    { value: "250+", label: "Happy Clients", icon: <User className="w-5 h-5" />, color: "from-red-500 to-red-600" },
-    { value: "4.9/5", label: "Average Rating", icon: <Star className="w-5 h-5" />, color: "from-red-600 to-red-700" },
-    { value: "98%", label: "Client Retention", icon: <ThumbsUp className="w-5 h-5" />, color: "from-red-700 to-red-800" },
-    { value: "500+", label: "Projects Delivered", icon: <Award className="w-5 h-5" />, color: "from-red-800 to-red-900" }
-  ];
+  
 
   const achievements = [
     "Award-winning designs",
@@ -260,48 +255,6 @@ export default function TestimonialsSection() {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="space-y-6"
           >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-              className="relative group"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-red-600/5 dark:from-red-500/10 dark:to-red-600/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300" />
-              <div className="relative p-8 rounded-2xl bg-white/80 dark:bg-black/80 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 shadow-lg">
-                <h3 className="text-2xl font-bold text-black dark:text-white mb-6 flex items-center gap-3">
-                  <TrendingUp className="w-6 h-6 text-red-600" />
-                  By The Numbers
-                </h3>
-                <div className="space-y-6">
-                  {stats.map((stat, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
-                      whileHover={{ x: 5 }}
-                      className="flex items-center justify-between p-4 rounded-xl bg-gradient-to-r from-red-50/50 to-red-100/30 dark:from-red-900/10 dark:to-red-800/10 hover:shadow-md transition-all duration-300"
-                    >
-                      <div className="flex items-center gap-4">
-                        <div className={`p-2 rounded-lg bg-gradient-to-br ${stat.color} bg-opacity-10`}>
-                          <div className={`text-red-600 dark:text-red-400`}>
-                            {stat.icon}
-                          </div>
-                        </div>
-                        <div>
-                          <div className="text-2xl font-bold text-black dark:text-white">
-                            {stat.value}
-                          </div>
-                          <div className="text-sm text-gray-600 dark:text-gray-400">
-                            {stat.label}
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
 
             {/* Achievements */}
             <motion.div
@@ -376,9 +329,9 @@ export default function TestimonialsSection() {
                 transition={{ duration: 0.5 }}
                 className="relative h-full"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 via-red-600/5 to-red-700/5 dark:from-red-500/10 dark:via-red-600/10 dark:to-red-700/10 rounded-3xl blur-xl" />
+                <div className="absolute  inset-0 bg-gradient-to-br from-red-500/5 via-red-600/5 to-red-700/5 dark:from-red-500/10 dark:via-red-600/10 dark:to-red-700/10 rounded-3xl blur-xl" />
                 
-                <div className="relative p-8 md:p-12 rounded-3xl bg-white/80 dark:bg-black/80 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 shadow-xl h-full">
+                <div className="relative p-12 md:p-12 rounded-3xl bg-white/80 dark:bg-black/80 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 shadow-xl h-full">
                   {/* Quote Icon */}
                   <motion.div
                     initial={{ scale: 0, rotate: -180 }}
@@ -434,25 +387,6 @@ export default function TestimonialsSection() {
                     </div>
                   </div>
 
-                  {/* Stats Grid */}
-                  <div className="grid grid-cols-3 gap-6 mt-8">
-                    {Object.entries(testimonials[activeIndex].stats).map(([key, value], i) => (
-                      <motion.div
-                        key={key}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.5 + i * 0.1 }}
-                        className="text-center p-4 rounded-xl bg-gradient-to-br from-red-50 to-red-100/50 dark:from-red-900/10 dark:to-red-800/10"
-                      >
-                        <div className={`text-2xl font-bold bg-gradient-to-r ${testimonials[activeIndex].color} bg-clip-text text-transparent`}>
-                          {value}
-                        </div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400 capitalize mt-1">
-                          {key.replace(/([A-Z])/g, ' $1')}
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
                 </div>
               </motion.div>
             </div>
@@ -487,41 +421,7 @@ export default function TestimonialsSection() {
           ))}
         </motion.div>
 
-        {/* Client Logos */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9, duration: 0.6 }}
-          className="relative group"
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-red-500/5 via-red-600/5 to-red-700/5 dark:from-red-500/10 dark:via-red-600/10 dark:to-red-700/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300" />
-          <div className="relative p-8 rounded-2xl bg-white/80 dark:bg-black/80 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 shadow-lg">
-            <h3 className="text-center text-xl font-bold text-black dark:text-white mb-8">
-              Trusted by Industry Leaders
-            </h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
-              {["TechNova", "GlobalBrands", "InnovateLabs", "MetaCorp", "StartupXYZ", "LogisticsPro"].map((company, index) => (
-                <motion.div
-                  key={company}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1 + index * 0.1, duration: 0.5 }}
-                  whileHover={{ y: -5, scale: 1.05 }}
-                  className="flex items-center justify-center p-4 rounded-xl bg-red-50/50 dark:bg-red-900/10 hover:bg-red-100/50 dark:hover:bg-red-800/20 transition-all duration-300"
-                >
-                  <div className="text-center">
-                    <div className={`text-lg font-bold bg-gradient-to-r from-red-600 to-red-800 bg-clip-text text-transparent`}>
-                      {company}
-                    </div>
-                    <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                      Partner
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
+       
       </div>
 
       {/* Floating Elements */}
