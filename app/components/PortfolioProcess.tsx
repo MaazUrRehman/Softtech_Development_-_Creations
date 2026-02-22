@@ -147,7 +147,6 @@ export default function PortfolioProcess() {
                       activeStep === index ? 'text-white' : 'text-red-600 dark:text-red-400'
                     }`}
                   >
-                    <ArrowRight className="w-5 h-5" />
                   </motion.div>
                 </div>
               </motion.div>

@@ -16,11 +16,15 @@ import {
   CheckCircle,
   Coffee,
   Users,
-  Zap
+  Zap,
+  Link,
+  CreditCard,
+  Settings
 } from 'lucide-react';
 import Header from "../components/Header";
 import FooterSection from "../components/Footer";
 import { useState } from 'react';
+import { section } from 'framer-motion/client';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -66,55 +70,65 @@ export default function ContactPage() {
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email Us",
-      details: ["hello@digitalstudio.com", "support@digitalstudio.com"],
+      details: ["softtech732@gmail.com"],
       color: "from-red-500 to-red-600",
-      link: "mailto:hello@digitalstudio.com"
+      link: "mailto:softtech732@gmail.com"
     },
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Call Us",
-      details: ["+1 (555) 123-4567", "+1 (555) 987-6543"],
+      details: ["+92 319 6876024"],
       color: "from-red-600 to-red-700",
-      link: "tel:+15551234567"
+      link: "tel:+923196876024"
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       title: "Visit Us",
-      details: ["123 Tech Street", "San Francisco, CA 94107"],
+      details: ["Karachi, Pakistan"],
       color: "from-red-700 to-red-800",
-      link: "https://maps.google.com"
+      link: "https://www.google.com/maps/place/Karachi,+Pakistan/@25.1929835,66.4959041,9z/data=!3m1!4b1!4m6!3m5!1s0x3eb33e06651d4bbf:0x9cf92f44555a0c23!8m2!3d24.8607343!4d67.0011364!16zL20vMDRjam4?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D"
     },
     {
       icon: <Clock className="w-6 h-6" />,
       title: "Working Hours",
-      details: ["Mon - Fri: 9AM - 6PM", "Sat: 10AM - 4PM"],
+      details: ["24/7"],
       color: "from-red-800 to-red-900",
       link: null
     },
   ];
 
   const faqs = [
-    {
-      question: "What's your typical response time?",
-      answer: "We respond to all inquiries within 24 hours. For urgent matters, call us directly.",
-      icon: <Zap className="w-5 h-5" />
-    },
-    {
-      question: "Do you offer free consultations?",
-      answer: "Yes! We offer free 30-minute consultations to discuss your project requirements.",
-      icon: <Coffee className="w-5 h-5" />
-    },
-    {
-      question: "What information should I provide?",
-      answer: "Share your project goals, timeline, budget, and any specific requirements you have.",
-      icon: <MessageSquare className="w-5 h-5" />
-    },
-    {
-      question: "Do you work with international clients?",
-      answer: "Absolutely! We serve clients worldwide across different time zones.",
-      icon: <Globe className="w-5 h-5" />
-    },
-  ];
+  {
+    question: "What's your typical response time?",
+    answer: "We respond to all inquiries within 24 hours. For urgent matters, call us directly.",
+    icon: <Zap className="w-5 h-5" />
+  },
+  {
+    question: "Do you offer free consultations?",
+    answer: "Yes! We offer free 30-minute consultations to discuss your project requirements.",
+    icon: <Coffee className="w-5 h-5" />
+  },
+  {
+    question: "What information should I provide?",
+    answer: "Share your project goals, timeline, budget, and any specific requirements you have.",
+    icon: <MessageSquare className="w-5 h-5" />
+  },
+  {
+    question: "Do you work with international clients?",
+    answer: "Absolutely! We serve clients worldwide across different time zones.",
+    icon: <Globe className="w-5 h-5" />
+  },
+  {
+    question: "What payment methods do you accept?",
+    answer: "We accept all major credit cards, bank transfers, and digital payment platforms like PayPal and Stripe. Custom payment plans are also available for long-term projects.",
+    icon: <CreditCard className="w-5 h-5" /> 
+  },
+  {
+    question: "Do you offer ongoing maintenance and support?",
+    answer: "Yes, we provide flexible maintenance packages to keep your website updated, secure, and running smoothly. Support options range from monthly checkups to 24/7 monitoring.",
+    icon: <Settings className="w-5 h-5" />
+  },
+];
 
   return (
     <>
@@ -471,21 +485,7 @@ export default function ContactPage() {
                 transition={{ duration: 0.8 }}
                 className="space-y-8"
               >
-                {/* Map Placeholder */}
-                <div className="relative rounded-3xl overflow-hidden shadow-xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-red-600/10" />
-                  <div className="relative h-64 md:h-80 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center">
-                    <div className="text-center">
-                      <MapPin className="w-12 h-12 text-red-600 dark:text-red-400 mx-auto mb-4" />
-                      <p className="text-lg font-semibold text-gray-700 dark:text-gray-300">
-                        123 Tech Street, San Francisco
-                      </p>
-                      <p className="text-gray-600 dark:text-gray-400">
-                        Click to view on Google Maps
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                
 
                 {/* FAQs */}
                 <div className="relative">
@@ -525,107 +525,11 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                {/* Schedule Call CTA */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3 }}
-                  className="relative"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-red-600/5 rounded-2xl blur-xl" />
-                  <div className="relative p-6 rounded-2xl bg-white/80 dark:bg-black/80 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 shadow-lg text-center">
-                    <Coffee className="w-12 h-12 text-red-600 dark:text-red-400 mx-auto mb-4" />
-                    <h4 className="text-xl font-bold text-black dark:text-white mb-3">
-                      Prefer a Quick Chat?
-                    </h4>
-                    <p className="text-gray-600 dark:text-gray-400 mb-4">
-                      Schedule a 30-minute consultation call with our experts.
-                    </p>
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="px-6 py-3 rounded-xl bg-gradient-to-r from-red-600 to-red-800 text-white font-medium"
-                    >
-                      Schedule a Call
-                    </motion.button>
-                  </div>
-                </motion.div>
               </motion.div>
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="relative py-24 overflow-hidden bg-gradient-to-b from-white via-red-50/5 to-red-50/10 dark:from-black dark:via-red-950/5 dark:to-red-950/10">
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute inset-0 opacity-5">
-              <div className="absolute inset-0" style={{
-                backgroundImage: `linear-gradient(to right, #ef4444 1px, transparent 1px),
-                                 linear-gradient(to bottom, #ef4444 1px, transparent 1px)`,
-                backgroundSize: '50px 50px'
-              }} />
-            </div>
-          </div>
-
-          <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <motion.div
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ duration: 0.3 }}
-                className="inline-flex p-4 rounded-xl bg-gradient-to-br from-red-500/10 to-red-600/10 border border-red-200/30 dark:border-red-800/30 mb-6"
-              >
-                <Users className="w-8 h-8 text-red-600 dark:text-red-400" />
-              </motion.div>
-              
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                <span className="block text-black dark:text-white">Ready to Start Your</span>
-                <span className="block bg-gradient-to-r from-red-600 via-red-700 to-red-800 bg-clip-text text-transparent">
-                  Next Project?
-                </span>
-              </h2>
-              
-              <p className="text-xl text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto">
-                Whether you have a project in mind or just want to explore possibilities, 
-                we're here to help bring your vision to life.
-              </p>
-
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 rounded-xl bg-gradient-to-r from-red-600 to-red-800 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group"
-                >
-                  <span className="flex items-center justify-center gap-2">
-                    Start a Project
-                    <motion.span
-                      animate={{ x: [0, 5, 0] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      <ArrowRight className="w-5 h-5" />
-                    </motion.span>
-                  </span>
-                </motion.button>
-
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 rounded-xl bg-white/80 dark:bg-black/80 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 text-gray-700 dark:text-gray-300 font-semibold hover:border-red-200 dark:hover:border-red-800 transition-all duration-300"
-                >
-                  <span className="flex items-center justify-center gap-2">
-                    View Our Work
-                    <Sparkles className="w-5 h-5 text-red-600 dark:text-red-400" />
-                  </span>
-                </motion.button>
-              </div>
-            </motion.div>
-          </div>
-        </section>
       </div>
       
       <FooterSection />

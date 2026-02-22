@@ -2,7 +2,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Sparkles, ArrowRight, Briefcase, Award, Users, Globe } from 'lucide-react';
+import { Sparkles, ArrowRight, Briefcase, Award, Users, Globe, ArrowDown } from 'lucide-react';
 import Link from 'next/link';
 
 export default function PortfolioHero() {
@@ -98,11 +98,11 @@ export default function PortfolioHero() {
               className="group px-8 py-4 rounded-xl bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold shadow-lg shadow-red-500/25 hover:shadow-xl hover:shadow-red-500/35 transition-all duration-300 flex items-center gap-3"
             >
               <span>View Our Work</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowDown className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             
             <Link
-              href="/contact"
+              href="/Contact"
               className="group px-8 py-4 rounded-xl bg-white/90 dark:bg-black/90 backdrop-blur-sm border border-red-200/50 dark:border-red-800/30 text-gray-700 dark:text-gray-300 font-semibold hover:border-red-300 dark:hover:border-red-700 transition-all duration-300 flex items-center gap-3"
             >
               <span>Start Your Project</span>
@@ -111,36 +111,6 @@ export default function PortfolioHero() {
           </motion.div>
         </div>
 
-        {/* Stats Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto"
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="relative group"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 to-red-600/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300" />
-              <div className="relative p-6 rounded-2xl bg-white/80 dark:bg-black/80 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 text-center">
-                <div className="flex justify-center mb-3">
-                  <div className="p-3 rounded-xl bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 text-red-600 dark:text-red-400">
-                    {stat.icon}
-                  </div>
-                </div>
-                <div className="text-3xl font-bold text-black dark:text-white mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">
-                  {stat.label}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );

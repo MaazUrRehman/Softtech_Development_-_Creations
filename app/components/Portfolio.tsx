@@ -218,7 +218,7 @@ export default function PortfolioSection() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 border border-red-200 dark:border-red-800/30 mb-6"
           >
             <Filter className="w-4 h-4 text-red-600 dark:text-red-400" />
-            <span className="text-sm font-semibold text-red-700 dark:text-red-300">
+            <span  className="text-sm font-semibold text-red-700 dark:text-red-300">
               Our Portfolio
             </span>
           </motion.div>
@@ -260,7 +260,7 @@ export default function PortfolioSection() {
             </h3>
           </div>
 
-          <div className="flex flex-wrap gap-3 justify-center">
+          <div id="showcase"  className="flex flex-wrap gap-3 justify-center">
             {categories.map((category) => (
               <motion.button
                 key={category.id}
