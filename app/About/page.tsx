@@ -17,7 +17,6 @@ export default function AboutPage() {
         <Methodology />
         <Achievements />
         <TestimonialsSection />
-        <Blogs />
         <FAqs />
         <FooterSection />
 

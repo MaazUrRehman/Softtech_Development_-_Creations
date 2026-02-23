@@ -1,5 +1,5 @@
 'use client';
-
+import Image from "next/image";
 import { motion } from 'framer-motion';
 import {
   Globe,
@@ -15,9 +15,7 @@ import {
   X,
   Filter,
   Circle,
-  ArrowRight
 } from 'lucide-react';
-import Link from 'next/dist/client/link';
 import { useState, useRef, useEffect } from 'react';
 
 export default function PortfolioSection() {
@@ -41,67 +39,105 @@ export default function PortfolioSection() {
   ];
 
   const projects = [
-    {
-      id: 1,
-      title: "Nexus Financial Platform",
-      category: "web",
-      description: "A comprehensive financial management platform with real-time analytics and reporting tools.",
-      technologies: ["React", "TypeScript", "Node.js", "PostgreSQL"],
-      color: "from-red-500 to-red-600",
-      imageColor: "bg-gradient-to-br from-red-500/20 to-red-600/20",
-      stats: { clients: "+500", growth: "45%", satisfaction: "98%" }
-    },
-    {
-      id: 2,
-      title: "UrbanFit Mobile App",
-      category: "mobile",
-      description: "Fitness tracking application with AI-powered workout recommendations and social features.",
-      technologies: ["React Native", "Firebase", "GraphQL", "TensorFlow.js"],
-      color: "from-red-600 to-red-700",
-      imageColor: "bg-gradient-to-br from-red-600/20 to-red-700/20",
-      stats: { downloads: "250K", rating: "4.9", active: "50K" }
-    },
-    {
-      id: 3,
-      title: "LuxeStyle E-commerce",
-      category: "ecommerce",
-      description: "Premium fashion e-commerce platform with AR try-on features and personalized recommendations.",
-      technologies: ["Next.js", "Stripe", "MongoDB", "Three.js"],
-      color: "from-red-700 to-red-800",
-      imageColor: "bg-gradient-to-br from-red-700/20 to-red-800/20",
-      stats: { revenue: "$5M+", conversion: "8.5%", retention: "75%" }
-    },
-    {
-      id: 4,
-      title: "MediCare Health Portal",
-      category: "web",
-      description: "Healthcare management system for clinics with appointment scheduling and patient records.",
-      technologies: ["Vue.js", "Python", "Django", "MySQL"],
-      color: "from-red-800 to-red-900",
-      imageColor: "bg-gradient-to-br from-red-800/20 to-red-900/20",
-      stats: { patients: "10K+", efficiency: "60%", accuracy: "99.5%" }
-    },
-    {
-      id: 5,
-      title: "Bloom Brand Identity",
-      category: "branding",
-      description: "Complete brand identity system for a sustainable cosmetics company.",
-      technologies: ["Figma", "Adobe Suite", "Blender", "After Effects"],
-      color: "from-red-500 to-red-700",
-      imageColor: "bg-gradient-to-br from-red-500/20 to-red-700/20",
-      stats: { recognition: "85%", engagement: "3x", sales: "+120%" }
-    },
-    {
-      id: 6,
-      title: "LogiTrack Pro",
-      category: "business",
-      description: "Enterprise logistics and supply chain management solution with IoT integration.",
-      technologies: ["Angular", "Java", "Spring Boot", "Redis"],
-      color: "from-red-600 to-red-800",
-      imageColor: "bg-gradient-to-br from-red-600/20 to-red-800/20",
-      stats: { delivery: "95%", cost: "-30%", capacity: "2.5x" }
-    },
+      {
+        id: 1,
+        title: "Trendzee",
+        category: "ecommerce",
+        description: "Trendzee is a premium Shopify-based watch store offering a curated collection of stylish timepieces for men, women, and couples. The store features modern, luxury, and minimalist designs tailored for everyday wear, formal occasions, and special moments. Built with a clean and responsive Shopify theme, the platform ensures a seamless shopping experience across desktop and mobile devices. It includes secure checkout integration, smooth product filtering by category and style, high-quality product galleries, customer reviews, and optimized performance for fast loading speeds. Trendzee focuses on delivering elegance, durability, and affordability while providing a user-friendly interface and a conversion-optimized shopping journey.",
+        image: "/assets/projects/trendzee.jpeg",
+        technologies: ["Shopify"],
+        stats: {
+          users: "10K+",
+          orders: "25K+",
+          rating: "4.8"
+        },
+        color: "from-red-500 to-red-600"
+      },
+      {
+        id: 2,
+        title: "Aliyan Portfolio",
+        category: "branding",
+        description: "Aliyan's personal portfolio website built with React and Tailwind CSS. The site showcases his projects, skills, and experience in a modern, responsive design. It features smooth animations, dark/light mode toggle, and a clean layout that highlights his work effectively.",
+        image: "/assets/projects/AliyanPortfolio.PNG",
+        technologies: ["React"],
+        stats: {
+          orders: "20K+",
+          rating: "4.5"
+        },
+        color: "from-red-500 to-red-600"
+      },
+      {
+        id: 3,
+        title: "FriendsBook",
+        category: "web",
+        description: "FriendsBook is a social media platform built with Laravel and MySQL. The platform allows users to create profiles, connect with friends, share posts, and engage in discussions. It features a clean interface for managing user connections, posting content, and interacting with other users.",
+        image: "/assets/projects/FriendsBook.PNG",
+        technologies: ["Laravel", "MySql"],
+        stats: {
+          users: "6K+",
+          orders: "18K+",
+          rating: "4.2"
+        },
+        color: "from-red-500 to-red-600"
+      },
+      {
+        id: 4,
+        title: "Library Management System",
+        category: "web",
+        description: "A modern library management system built with Laravel and MySQL. The system allows librarians to manage books, members, and borrowing records efficiently. It features a clean interface for adding new books, tracking overdue items, and generating reports on library usage.",
+        image: "/assets/projects/LMS.PNG",
+        technologies: ["Laravel", "MySql"],
+        stats: {
+          users: "3K+",
+          orders: "4K+",
+          rating: "4.3"
+        },
+        color: "from-red-500 to-red-600"
+      },
+      {
+        id: 5,
+        title: "Pay Buz Bill",
+        category: "web",
+        description: "A modern billing and payment management system built with Vue.js and Tailwind CSS. The platform allows users to manage bills, make payments, and track transactions in a clean, responsive interface. It features secure payment processing, user authentication, and an intuitive dashboard for managing financial records.",
+        image: "/assets/projects/PBB.PNG",
+        technologies: ["Vue"],
+        stats: {
+          users: "7K+",
+          orders: "10K+",
+          rating: "4.6"
+        },
+        color: "from-red-500 to-red-600"
+      },
+      {
+        id: 6,
+        title: "Real Estate",
+        category: "business",
+        description: "A modern real estate platform built with Next.js and Tailwind CSS. The platform features property listings, search functionality, and a responsive design that works seamlessly across all devices. It includes advanced filtering options, property details pages, and an intuitive user interface for browsing and managing real estate listings.",
+        image: "/assets/projects/RealEstate.PNG",
+        technologies: ["Node", "Express", "MongoDB"],
+        stats: {
+          users: "1K+",
+          orders: "5K+",
+          rating: "4.1"
+        },
+        color: "from-red-500 to-red-600"
+      },
+      {
+        id: 7,
+        title: "Zeeshan Portfolio",
+        category: "branding",
+        description: "Zeeshan's personal portfolio website built with Next.js and Tailwind CSS. The site showcases his projects, skills, and experience in a modern, responsive design. It features smooth animations, dark/light mode toggle, and a clean layout that highlights his work effectively.",
+        image: "/assets/projects/Zeeshan.PNG",
+        technologies: ["Next", "Tailwind"],
+        stats: {
+          orders: "1K+",
+          rating: "4.8"
+        },
+        color: "from-red-500 to-red-600"
+      },
+
   ];
+
 
   const filteredProjects = selectedCategory === 'all'
     ? projects
@@ -293,38 +329,7 @@ export default function PortfolioSection() {
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
-            {/* Carousel Navigation Buttons */}
-            <button
-              onClick={handlePrevSlide}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/90 dark:bg-black/90 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 shadow-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-300 group"
-            >
-              <ChevronLeft className="w-6 h-6 text-red-600 dark:text-red-400 group-hover:scale-110 transition-transform" />
-            </button>
-
-            <button
-              onClick={handleNextSlide}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/90 dark:bg-black/90 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 shadow-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-300 group"
-            >
-              <ChevronRight className="w-6 h-6 text-red-600 dark:text-red-400 group-hover:scale-110 transition-transform" />
-            </button>
-
-            {/* Auto-play Toggle */}
-            <button
-              onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-              className="absolute top-4 right-4 z-20 p-2 rounded-lg bg-white/90 dark:bg-black/90 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
-            >
-              {isAutoPlaying ? (
-                <div className="flex items-center gap-2 text-red-600 dark:text-red-400">
-                  <div className="w-2 h-2 bg-red-600 dark:bg-red-400 rounded-full animate-pulse" />
-                  <span className="text-sm font-medium">Auto</span>
-                </div>
-              ) : (
-                <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
-                  <Circle className="w-4 h-4" />
-                  <span className="text-sm font-medium">Paused</span>
-                </div>
-              )}
-            </button>
+            
 
             {/* Carousel Slides */}
             <div className="relative h-[600px]">
@@ -343,20 +348,16 @@ export default function PortfolioSection() {
                 >
                   <div className="max-w-6xl w-full h-full flex flex-col lg:flex-row gap-8 items-center">
                     {/* Project Image/Color Area */}
-                    <div className={`lg:w-1/2 h-full ${project.imageColor} rounded-2xl relative overflow-hidden`}>
-                      <div className="absolute inset-0 bg-gradient-to-tr from-black/10 via-transparent to-transparent" />
-
-                      {/* Animated background elements */}
-                      <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                        className="absolute -top-20 -right-20 w-64 h-64 border border-red-200/20 dark:border-red-600/8 rounded-full"
+                    <div className={`lg:w-1/2 h-full rounded-2xl relative rounded-2xl overflow-hidden`}>
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="object-cover"
+                        priority
                       />
-                      <motion.div
-                        animate={{ rotate: -360 }}
-                        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                        className="absolute -bottom-20 -left-20 w-64 h-64 border border-red-200/20 dark:border-red-600/8 rounded-full"
-                      />
+                      
 
                       {/* Category Badge */}
                       <div className="absolute top-6 left-6">
@@ -410,47 +411,14 @@ export default function PortfolioSection() {
                         </div>
                       </div>
 
-                      {/* View Details Button */}
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => setSelectedProject(project.id)}
-                        className="group px-6 py-3 rounded-xl bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold shadow-lg shadow-red-500/25 hover:shadow-xl hover:shadow-red-500/35 transition-all duration-300 flex items-center gap-3"
-                      >
-                        <span>View Project Details</span>
-                        <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                      </motion.button>
+                      
                     </div>
                   </div>
                 </motion.div>
               ))}
             </div>
 
-            {/* Carousel Indicators */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-3">
-              {filteredProjects.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`p-1 transition-all duration-300 ${currentSlide === index ? 'scale-125' : 'opacity-50 hover:opacity-75'
-                    }`}
-                >
-                  <div
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${currentSlide === index
-                        ? 'bg-gradient-to-r from-red-500 to-red-600'
-                        : 'bg-red-300 dark:bg-red-700'
-                      }`}
-                  />
-                </button>
-              ))}
-            </div>
-
-            {/* Slide Counter */}
-            <div className="absolute bottom-6 right-6 z-20 px-4 py-2 rounded-full bg-white/90 dark:bg-black/90 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30">
-              <span className="text-sm font-semibold text-red-600 dark:text-red-400">
-                {currentSlide + 1} / {filteredProjects.length}
-              </span>
-            </div>
+            
           </div>
         </motion.div>
 
