@@ -51,8 +51,9 @@ export default function Header() {
               href="/" 
               className="flex items-center gap-3 group"
             >
-              <div className="w-10 h-10 bg-gradient-to-br from-red-600 via-red-700 to-red-800 rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-red-500/20 dark:group-hover:shadow-red-600/30 transition-all duration-300">
-                <div className="w-4 h-4 bg-white rounded-sm" />
+              
+              <div className="w-14 h-14 bg-gradient-to-br rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-red-500/20 dark:group-hover:shadow-red-600/30 transition-all duration-300">
+                <img src="red_head.png" alt="softtech" />
               </div>
               <div>
                 <div className="text-xl font-bold text-black dark:text-white group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors duration-300">

@@ -1,3 +1,4 @@
+
 'use client';
 import Image from "next/image";
 import { motion } from 'framer-motion';
@@ -131,6 +132,19 @@ export default function PortfolioSection() {
         technologies: ["Next", "Tailwind"],
         stats: {
           orders: "1K+",
+          rating: "4.8"
+        },
+        color: "from-red-500 to-red-600"
+      },
+      {
+        id: 8,
+        title: "Matrimonial Web",
+        category: "web",
+        description: "A comprehensive matrimonial platform built with Laravel and React that connects individuals seeking life partners. The website features detailed profile creation with preferences for religion, caste, profession, and location. It includes advanced matchmaking algorithms, secure messaging system, privacy controls, photo galleries with verification, and interest/request management. Users can search and filter potential matches based on multiple criteria, view compatibility scores, and connect with families.",
+        image: "/assets/projects/Matrimonial.PNG",
+        technologies: ["Laravel", "React", "Mysql", "Tailwind"],
+        stats: {
+          orders: "2K+",
           rating: "4.8"
         },
         color: "from-red-500 to-red-600"
@@ -329,7 +343,22 @@ export default function PortfolioSection() {
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
+            {/* Navigation Buttons */}
+            <button
+              onClick={handlePrevSlide}
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/90 dark:bg-black/90 backdrop-blur-sm text-red-600 hover:bg-red-600 hover:text-white transition-all duration-300 shadow-lg group"
+              aria-label="Previous project"
+            >
+              <ChevronLeft className="w-6 h-6 group-hover:scale-110 transition-transform" />
+            </button>
             
+            <button
+              onClick={handleNextSlide}
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/90 dark:bg-black/90 backdrop-blur-sm text-red-600 hover:bg-red-600 hover:text-white transition-all duration-300 shadow-lg group"
+              aria-label="Next project"
+            >
+              <ChevronRight className="w-6 h-6 group-hover:scale-110 transition-transform" />
+            </button>
 
             {/* Carousel Slides */}
             <div className="relative h-[600px]">
@@ -418,7 +447,21 @@ export default function PortfolioSection() {
               ))}
             </div>
 
-            
+            {/* Slide Indicators */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+              {filteredProjects.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`transition-all duration-300 ${
+                    currentSlide === index
+                      ? 'w-10 h-2 bg-red-600 rounded-full'
+                      : 'w-2 h-2 bg-red-300/50 dark:bg-red-700/50 rounded-full hover:bg-red-400 dark:hover:bg-red-600'
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </motion.div>
 

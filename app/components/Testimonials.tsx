@@ -1,9 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { 
-  Star, 
-  Quote, 
+import {
+  Star,
+  Quote,
   User,
   ChevronLeft,
   ChevronRight,
@@ -24,73 +24,103 @@ export default function TestimonialsSection() {
   const testimonials = [
     {
       id: 1,
-      name: "Alexandra Chen",
-      role: "CEO, TechNova Inc.",
-      content: "Working with this team transformed our digital presence. Their innovative approach and attention to detail exceeded our expectations at every turn. The results speak for themselves.",
-      rating: 4,
-      company: "TechNova",
-      project: "Enterprise Platform",
-      stats: { growth: "300%", satisfaction: "98%", timeline: "-30%" },
-      color: "from-red-500 to-red-600"
+      name: "Ahmed Raza",
+      role: "Owner, Raza Textile Mills",
+      content: "Team ne humare textile business ke liye jo e-commerce website banayi hai, uski waja se ab hum poore Pakistan se orders le rahe hain. Sales mein 200% izafa howa hai. Web design bohat professional hai aur mobile par bhi perfect kaam karta hai.",
+      rating: 5,
+      company: "Raza Textile Mills",
+      project: "E-commerce Website + Branding",
+      stats: { sales: "+200%", orders: "500+", reach: "Pakistan Wide" },
+      color: "from-green-600 to-green-700",
+      service: "E-commerce Development"
     },
     {
       id: 2,
-      name: "Marcus Rodriguez",
-      role: "CTO, InnovateLabs",
-      content: "The technical expertise demonstrated by this team is exceptional. They delivered a scalable solution that perfectly aligned with our business objectives. Truly outstanding work!",
+      name: "Fatima Akhtar",
+      role: "Founder, The Desi Kitchen",
+      content: "Humare food business ke liye social media marketing aur graphic designing mein inka kaam zabardast hai. Jo posters aur banners banaye hain, unki waja se Instagram par 50k followers ho gaye hain. Orders mein bhi bohat izafa howa.",
       rating: 5,
-      company: "InnovateLabs",
-      project: "Mobile Application",
-      stats: { downloads: "500K", retention: "85%", rating: "4.9" },
-      color: "from-red-600 to-red-700"
+      company: "The Desi Kitchen",
+      project: "Social Media Marketing + Graphic Design",
+      stats: { followers: "50K+", orders: "3x", engagement: "85%" },
+      color: "from-green-600 to-green-800",
+      service: "Digital Marketing"
     },
     {
       id: 3,
-      name: "Sophia Williams",
-      role: "Marketing Director, GlobalBrands",
-      content: "From concept to execution, the team was professional, creative, and results-driven. Our engagement metrics have never been better. Highly recommended!",
+      name: "Kamran Ali",
+      role: "Director, Ali Traders",
+      content: "Business branding aur logo design mein inka kaam bohat professional hai. Jo brand identity banayi hai, us se hamare customers mein trust bara hai. Visiting cards aur brochures bhi bohat achi quality ke banaye hain.",
       rating: 4,
-      company: "GlobalBrands",
-      project: "Brand Strategy",
-      stats: { engagement: "250%", roi: "450%", reach: "3M+" },
-      color: "from-red-700 to-red-800"
+      company: "Ali Traders",
+      project: "Complete Branding + Stationery Design",
+      stats: { recognition: "70%", leads: "+150%", retention: "90%" },
+      color: "from-green-700 to-green-800",
+      service: "Branding & Graphic Design"
     },
     {
       id: 4,
-      name: "James Wilson",
-      role: "Founder, StartupXYZ",
-      content: "As a startup, we needed a partner who understood our vision and constraints. They delivered beyond our expectations within budget and timeline. Exceptional!",
+      name: "Sana Mirza",
+      role: "CEO, Mirza Construction",
+      content: "Humare construction business ke liye web development aur digital marketing mein inki services bohat beneficial sabit huin. Website se daily 15-20 genuine inquiries aa rahi hain. Google par bhi hamari ranking bohat achi hai.",
       rating: 4,
-      company: "StartupXYZ",
-      project: "MVP Development",
-      stats: { funding: "$2.5M", users: "100K", valuation: "10x" },
-      color: "from-red-800 to-red-900"
+      company: "Mirza Construction",
+      project: "Web Development + SEO",
+      stats: { inquiries: "+400%", ranking: "Top 3", traffic: "10x" },
+      color: "from-green-700 to-green-900",
+      service: "Web Development"
     },
     {
       id: 5,
-      name: "Elena Petrova",
-      role: "Product Lead, MetaCorp",
-      content: "The user experience design implemented by this team has significantly improved our customer satisfaction scores. Their attention to detail is remarkable.",
+      name: "Bilal Ahmed",
+      role: "Owner, Ahmed Electronics",
+      content: "E-commerce website aur Facebook Ads ke through hum电子产品 poore Pakistan mein bech rahe hain. Sales mein 300% izafa howa. Team ne jo product photography aur banners banaye hain, wo professional hain.",
       rating: 5,
-      company: "MetaCorp",
-      project: "UX Overhaul",
-      stats: { csat: "95%", speed: "3x", errors: "-80%" },
-      color: "from-red-500 to-red-700"
+      company: "Ahmed Electronics",
+      project: "E-commerce + Social Media Ads",
+      stats: { sales: "+300%", conversion: "12%", roi: "400%" },
+      color: "from-green-600 to-green-800",
+      service: "E-commerce & SMM"
     },
     {
       id: 6,
-      name: "David Kim",
-      role: "Operations Director, LogisticsPro",
-      content: "Their solution streamlined our operations and reduced costs by 40%. The team was professional, responsive, and delivered exactly what we needed.",
+      name: "Rabia Khalid",
+      role: "Founder, Rabia's Beauty Clinic",
+      content: "Beauty clinic ke liye jo branding, logo aur social media marketing ki hai, us se bahut naye clients aye hain. Instagram reels aur posts design itni achi hain ke clients khud share karte hain. Highly recommended!",
+      rating: 5,
+      company: "Rabia's Beauty Clinic",
+      project: "Complete Digital Package",
+      stats: { clients: "+200%", booking: "95%", reach: "500K+" },
+      color: "from-green-600 to-green-800",
+      service: "Complete Branding & Marketing"
+    },
+    {
+      id: 7,
+      name: "Tariq Mehmood",
+      role: "Partner, Mehmood & Sons",
+      content: "Hamare wholesale business ke liye jo website banayi hai, us se ab retailers online order kar rahe hain. Graphic design team ne jo catalogue banaya hai, wo bohat impressive hai. Process automate honey se time ki bohat bachat hui.",
       rating: 4,
-      company: "LogisticsPro",
-      project: "Operations System",
-      stats: { efficiency: "65%", cost: "-40%", delivery: "99%" },
-      color: "from-red-600 to-red-800"
+      company: "Mehmood & Sons",
+      project: "B2B Website + Catalogue Design",
+      stats: { orders: "60%", time: "-40%", satisfaction: "98%" },
+      color: "from-green-700 to-green-800",
+      service: "Web Development & Design"
+    },
+    {
+      id: 8,
+      name: "Zainab Farooq",
+      role: "Director, Zainab's Boutique",
+      content: "Fashion boutique ke liye branding aur social media marketing mein inka kaam outstanding hai. Jo logo aur posters design kiye hain, wo unique aur eye-catching hain. Influencer marketing campaign ne bhi bohat help ki.",
+      rating: 5,
+      company: "Zainab's Boutique",
+      project: "Branding + Influencer Marketing",
+      stats: { sales: "+180%", instagram: "75K", brandValue: "+200%" },
+      color: "from-green-600 to-green-800",
+      service: "Social Media Marketing"
     }
   ];
 
-  
+
 
   const achievements = [
     "Award-winning designs",
@@ -158,11 +188,11 @@ export default function TestimonialsSection() {
 
         {/* Floating Quote Icons */}
         <motion.div
-          animate={{ 
+          animate={{
             y: [0, -20, 0],
             rotate: [0, 5, -5, 0]
           }}
-          transition={{ 
+          transition={{
             duration: 8,
             repeat: Infinity,
             ease: "easeInOut"
@@ -171,13 +201,13 @@ export default function TestimonialsSection() {
         >
           <Quote className="w-full h-full text-red-200/20 dark:text-red-800/20" />
         </motion.div>
-        
+
         <motion.div
-          animate={{ 
+          animate={{
             y: [0, 20, 0],
             scale: [1, 1.1, 1]
           }}
-          transition={{ 
+          transition={{
             duration: 6,
             repeat: Infinity,
             ease: "easeInOut",
@@ -187,13 +217,13 @@ export default function TestimonialsSection() {
         >
           <Quote className="w-full h-full text-red-200/15 dark:text-red-800/15" />
         </motion.div>
-        
+
         <motion.div
-          animate={{ 
+          animate={{
             x: [0, 15, 0, -15, 0],
             y: [0, -15, 0, 15, 0]
           }}
-          transition={{ 
+          transition={{
             duration: 10,
             repeat: Infinity,
             ease: "easeInOut"
@@ -242,7 +272,7 @@ export default function TestimonialsSection() {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
           >
-            Discover why businesses trust us to deliver exceptional results. Our clients&apos; 
+            Discover why businesses trust us to deliver exceptional results. Our clients&apos;
             success is our greatest achievement.
           </motion.p>
         </motion.div>
@@ -330,7 +360,7 @@ export default function TestimonialsSection() {
                 className="relative h-full"
               >
                 <div className="absolute  inset-0 bg-gradient-to-br from-red-500/5 via-red-600/5 to-red-700/5 dark:from-red-500/10 dark:via-red-600/10 dark:to-red-700/10 rounded-3xl blur-xl" />
-                
+
                 <div className="relative p-12 md:p-12 rounded-3xl bg-white/80 dark:bg-black/80 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 shadow-xl h-full">
                   {/* Quote Icon */}
                   <motion.div
@@ -410,7 +440,7 @@ export default function TestimonialsSection() {
             >
               <motion.div
                 whileHover={{ scale: 1.2 }}
-                animate={{ 
+                animate={{
                   width: activeIndex === index ? 48 : 12,
                   backgroundColor: activeIndex === index ? '#ef4444' : '#fecaca'
                 }}
@@ -421,7 +451,7 @@ export default function TestimonialsSection() {
           ))}
         </motion.div>
 
-       
+
       </div>
 
       {/* Floating Elements */}
@@ -431,11 +461,11 @@ export default function TestimonialsSection() {
         className="absolute bottom-20 left-10 w-16 h-16 border border-red-200/25 dark:border-red-700/15 rounded-full hidden lg:block"
       />
       <motion.div
-        animate={{ 
+        animate={{
           y: [0, 15, 0],
           rotate: [0, 180, 360]
         }}
-        transition={{ 
+        transition={{
           y: { duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 },
           rotate: { duration: 20, repeat: Infinity, ease: "linear" }
         }}
