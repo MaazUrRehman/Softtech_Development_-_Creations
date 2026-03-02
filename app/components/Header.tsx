@@ -53,7 +53,7 @@ export default function Header() {
             >
               
               <div className="w-14 h-14 bg-gradient-to-br rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-red-500/20 dark:group-hover:shadow-red-600/30 transition-all duration-300">
-                <img src="red_head.png" alt="softtech" />
+                <img src="red_head_transparent.png" alt="softtech" />
               </div>
               <div>
                 <div className="text-xl font-bold text-black dark:text-white group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors duration-300">

@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Mail,
   Phone,
@@ -8,23 +8,20 @@ import {
   Clock,
   MessageSquare,
   Send,
-  ArrowRight,
-  Sparkles,
   User,
   MailIcon,
   Globe,
   CheckCircle,
   Coffee,
-  Users,
   Zap,
-  Link,
   CreditCard,
-  Settings
+  Settings,
+  AlertCircle,
+  Loader
 } from 'lucide-react';
 import Header from "../components/Header";
 import FooterSection from "../components/Footer";
 import { useState } from 'react';
-import { section } from 'framer-motion/client';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -37,22 +34,87 @@ export default function ContactPage() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<{[key: string]: string}>({});
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+  const validateForm = () => {
+    const errors: {[key: string]: string} = {};
+    
+    if (!formData.name.trim()) {
+      errors.name = 'Name is required';
+    }
+    
+    if (!formData.email.trim()) {
+      errors.email = 'Email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      errors.email = 'Invalid email format';
+    }
+    
+    if (!formData.subject) {
+      errors.subject = 'Please select a subject';
+    }
+    
+    if (!formData.message.trim()) {
+      errors.message = 'Message is required';
+    } else if (formData.message.length < 10) {
+      errors.message = 'Message must be at least 10 characters';
+    }
+    
+    return errors;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
     
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
+    // Clear error for this field
+    if (fieldErrors[name]) {
+      setFieldErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors[name];
+        return newErrors;
+      });
+    }
+    
+    // Clear general error
+    if (error) setError(null);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Validate form
+    const errors = validateForm();
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors);
+      return;
+    }
+    
+    setIsSubmitting(true);
+    setError(null);
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
+
+      // Success
       setIsSubmitted(true);
+      
+      // Reset form
       setFormData({
         name: '',
         email: '',
@@ -61,9 +123,12 @@ export default function ContactPage() {
         message: ''
       });
       
-      // Reset success message after 5 seconds
-      setTimeout(() => setIsSubmitted(false), 5000);
-    }, 1500);
+    } catch (err: any) {
+      setError(err.message || 'Something went wrong. Please try again.');
+      console.error('Form submission error:', err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -86,7 +151,7 @@ export default function ContactPage() {
       title: "Visit Us",
       details: ["Karachi, Pakistan"],
       color: "from-red-700 to-red-800",
-      link: "https://www.google.com/maps/place/Karachi,+Pakistan/@25.1929835,66.4959041,9z/data=!3m1!4b1!4m6!3m5!1s0x3eb33e06651d4bbf:0x9cf92f44555a0c23!8m2!3d24.8607343!4d67.0011364!16zL20vMDRjam4?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D"
+      link: "https://www.google.com/maps/place/Karachi,+Pakistan/"
     },
     {
       icon: <Clock className="w-6 h-6" />,
@@ -98,37 +163,37 @@ export default function ContactPage() {
   ];
 
   const faqs = [
-  {
-    question: "What's your typical response time?",
-    answer: "We respond to all inquiries within 24 hours. For urgent matters, call us directly.",
-    icon: <Zap className="w-5 h-5" />
-  },
-  {
-    question: "Do you offer free consultations?",
-    answer: "Yes! We offer free 30-minute consultations to discuss your project requirements.",
-    icon: <Coffee className="w-5 h-5" />
-  },
-  {
-    question: "What information should I provide?",
-    answer: "Share your project goals, timeline, budget, and any specific requirements you have.",
-    icon: <MessageSquare className="w-5 h-5" />
-  },
-  {
-    question: "Do you work with international clients?",
-    answer: "Absolutely! We serve clients worldwide across different time zones.",
-    icon: <Globe className="w-5 h-5" />
-  },
-  {
-    question: "What payment methods do you accept?",
-    answer: "We accept all major credit cards, bank transfers, and digital payment platforms like PayPal and Stripe. Custom payment plans are also available for long-term projects.",
-    icon: <CreditCard className="w-5 h-5" /> 
-  },
-  {
-    question: "Do you offer ongoing maintenance and support?",
-    answer: "Yes, we provide flexible maintenance packages to keep your website updated, secure, and running smoothly. Support options range from monthly checkups to 24/7 monitoring.",
-    icon: <Settings className="w-5 h-5" />
-  },
-];
+    {
+      question: "What's your typical response time?",
+      answer: "We respond to all inquiries within 24 hours. For urgent matters, call us directly.",
+      icon: <Zap className="w-5 h-5" />
+    },
+    {
+      question: "Do you offer free consultations?",
+      answer: "Yes! We offer free 30-minute consultations to discuss your project requirements.",
+      icon: <Coffee className="w-5 h-5" />
+    },
+    {
+      question: "What information should I provide?",
+      answer: "Share your project goals, timeline, budget, and any specific requirements you have.",
+      icon: <MessageSquare className="w-5 h-5" />
+    },
+    {
+      question: "Do you work with international clients?",
+      answer: "Absolutely! We serve clients worldwide across different time zones.",
+      icon: <Globe className="w-5 h-5" />
+    },
+    {
+      question: "What payment methods do you accept?",
+      answer: "We accept all major credit cards, bank transfers, and digital payment platforms.",
+      icon: <CreditCard className="w-5 h-5" /> 
+    },
+    {
+      question: "Do you offer ongoing maintenance?",
+      answer: "Yes, we provide flexible maintenance packages to keep your website updated and secure.",
+      icon: <Settings className="w-5 h-5" />
+    },
+  ];
 
   return (
     <>
@@ -139,16 +204,12 @@ export default function ContactPage() {
         <section className="relative pt-32 pb-24 overflow-hidden bg-gradient-to-b from-white via-red-50/10 to-white dark:from-black dark:via-red-950/5 dark:to-black">
           {/* Background Elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {/* Grid Pattern */}
-            <div className="absolute inset-0 opacity-5">
-              <div className="absolute inset-0" style={{
-                backgroundImage: `linear-gradient(to right, #ef4444 1px, transparent 1px),
-                                 linear-gradient(to bottom, #ef4444 1px, transparent 1px)`,
-                backgroundSize: '50px 50px'
-              }} />
-            </div>
-
-            {/* Animated Geometric Circles */}
+            <div className="absolute inset-0 opacity-5" style={{
+              backgroundImage: `linear-gradient(to right, #ef4444 1px, transparent 1px),
+                               linear-gradient(to bottom, #ef4444 1px, transparent 1px)`,
+              backgroundSize: '50px 50px'
+            }} />
+            
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
@@ -158,27 +219,6 @@ export default function ContactPage() {
               animate={{ rotate: -360 }}
               transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
               className="absolute -bottom-32 -left-32 w-96 h-96 border border-red-200/10 dark:border-red-700/4 rounded-full"
-            />
-
-            {/* Floating Elements */}
-            <motion.div
-              animate={{ y: [0, -30, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute bottom-20 left-10 w-16 h-16 border border-red-200/25 dark:border-red-700/15 rounded-full hidden lg:block"
-            />
-            
-            <motion.div
-              animate={{ 
-                y: [0, 20, 0],
-                rotate: [0, 180, 360]
-              }}
-              transition={{ 
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              className="absolute top-20 right-10 w-12 h-12 border border-red-200/20 dark:border-red-600/8"
-              style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }}
             />
           </div>
 
@@ -241,7 +281,7 @@ export default function ContactPage() {
                   className="relative group"
                 >
                   {info.link ? (
-                    <a href={info.link} className="block">
+                    <a href={info.link} target="_blank" rel="noopener noreferrer" className="block">
                       <div className={`absolute inset-0 bg-gradient-to-br ${info.color} rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
                       <div className="relative p-6 rounded-2xl bg-white/80 dark:bg-black/80 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 shadow-lg text-center group-hover:border-red-200 dark:group-hover:border-red-800 transition-all duration-300">
                         <motion.div
@@ -264,28 +304,25 @@ export default function ContactPage() {
                       </div>
                     </a>
                   ) : (
-                    <>
-                      <div className={`absolute inset-0 bg-gradient-to-br ${info.color} rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
-                      <div className="relative p-6 rounded-2xl bg-white/80 dark:bg-black/80 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 shadow-lg text-center">
-                        <motion.div
-                          whileHover={{ rotate: 15, scale: 1.1 }}
-                          transition={{ duration: 0.3 }}
-                          className={`w-16 h-16 rounded-xl bg-gradient-to-br ${info.color} mx-auto mb-6 flex items-center justify-center`}
-                        >
-                          <div className="text-white">
-                            {info.icon}
-                          </div>
-                        </motion.div>
-                        <h3 className="text-xl font-bold text-black dark:text-white mb-3">
-                          {info.title}
-                        </h3>
-                        {info.details.map((detail, idx) => (
-                          <p key={idx} className="text-gray-600 dark:text-gray-400 mb-1">
-                            {detail}
-                          </p>
-                        ))}
-                      </div>
-                    </>
+                    <div className="relative p-6 rounded-2xl bg-white/80 dark:bg-black/80 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 shadow-lg text-center">
+                      <motion.div
+                        whileHover={{ rotate: 15, scale: 1.1 }}
+                        transition={{ duration: 0.3 }}
+                        className={`w-16 h-16 rounded-xl bg-gradient-to-br ${info.color} mx-auto mb-6 flex items-center justify-center`}
+                      >
+                        <div className="text-white">
+                          {info.icon}
+                        </div>
+                      </motion.div>
+                      <h3 className="text-xl font-bold text-black dark:text-white mb-3">
+                        {info.title}
+                      </h3>
+                      {info.details.map((detail, idx) => (
+                        <p key={idx} className="text-gray-600 dark:text-gray-400 mb-1">
+                          {detail}
+                        </p>
+                      ))}
+                    </div>
                   )}
                 </motion.div>
               ))}
@@ -347,12 +384,27 @@ export default function ContactPage() {
                     </motion.div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-6">
+                      {/* Error Message */}
+                      <AnimatePresence>
+                        {error && (
+                          <motion.div
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            className="p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 flex items-start gap-3"
+                          >
+                            <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
+                            <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+
                       <div className="grid sm:grid-cols-2 gap-6">
                         <div>
                           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                             <span className="flex items-center gap-2">
                               <User className="w-4 h-4" />
-                              Your Name
+                              Your Name *
                             </span>
                           </label>
                           <input
@@ -360,16 +412,22 @@ export default function ContactPage() {
                             name="name"
                             value={formData.name}
                             onChange={handleChange}
-                            required
-                            className="w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-black/50 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 focus:border-red-500 dark:focus:border-red-500 focus:ring-2 focus:ring-red-500/20 dark:focus:ring-red-500/30 transition-all duration-300 outline-none"
+                            className={`w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-black/50 backdrop-blur-sm border ${
+                              fieldErrors.name 
+                                ? 'border-red-500 focus:border-red-500' 
+                                : 'border-red-100/50 dark:border-red-900/30 focus:border-red-500'
+                            } focus:ring-2 focus:ring-red-500/20 dark:focus:ring-red-500/30 transition-all duration-300 outline-none`}
                             placeholder="John Doe"
                           />
+                          {fieldErrors.name && (
+                            <p className="mt-1 text-xs text-red-500">{fieldErrors.name}</p>
+                          )}
                         </div>
                         <div>
                           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                             <span className="flex items-center gap-2">
                               <MailIcon className="w-4 h-4" />
-                              Email Address
+                              Email Address *
                             </span>
                           </label>
                           <input
@@ -377,10 +435,16 @@ export default function ContactPage() {
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
-                            required
-                            className="w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-black/50 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 focus:border-red-500 dark:focus:border-red-500 focus:ring-2 focus:ring-red-500/20 dark:focus:ring-red-500/30 transition-all duration-300 outline-none"
+                            className={`w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-black/50 backdrop-blur-sm border ${
+                              fieldErrors.email 
+                                ? 'border-red-500 focus:border-red-500' 
+                                : 'border-red-100/50 dark:border-red-900/30 focus:border-red-500'
+                            } focus:ring-2 focus:ring-red-500/20 dark:focus:ring-red-500/30 transition-all duration-300 outline-none`}
                             placeholder="john@example.com"
                           />
+                          {fieldErrors.email && (
+                            <p className="mt-1 text-xs text-red-500">{fieldErrors.email}</p>
+                          )}
                         </div>
                       </div>
 
@@ -389,7 +453,7 @@ export default function ContactPage() {
                           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                             <span className="flex items-center gap-2">
                               <Phone className="w-4 h-4" />
-                              Phone Number
+                              Phone Number (Optional)
                             </span>
                           </label>
                           <input
@@ -405,15 +469,18 @@ export default function ContactPage() {
                           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                             <span className="flex items-center gap-2">
                               <MessageSquare className="w-4 h-4" />
-                              Subject
+                              Subject *
                             </span>
                           </label>
                           <select
                             name="subject"
                             value={formData.subject}
                             onChange={handleChange}
-                            required
-                            className="w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-black/50 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 focus:border-red-500 dark:focus:border-red-500 focus:ring-2 focus:ring-red-500/20 dark:focus:ring-red-500/30 transition-all duration-300 outline-none"
+                            className={`w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-black/50 backdrop-blur-sm border ${
+                              fieldErrors.subject 
+                                ? 'border-red-500 focus:border-red-500' 
+                                : 'border-red-100/50 dark:border-red-900/30 focus:border-red-500'
+                            } focus:ring-2 focus:ring-red-500/20 dark:focus:ring-red-500/30 transition-all duration-300 outline-none`}
                           >
                             <option value="">Select a subject</option>
                             <option value="Web Development">Web Development</option>
@@ -423,6 +490,9 @@ export default function ContactPage() {
                             <option value="Consultation">Consultation</option>
                             <option value="Other">Other</option>
                           </select>
+                          {fieldErrors.subject && (
+                            <p className="mt-1 text-xs text-red-500">{fieldErrors.subject}</p>
+                          )}
                         </div>
                       </div>
 
@@ -430,18 +500,24 @@ export default function ContactPage() {
                         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                           <span className="flex items-center gap-2">
                             <MessageSquare className="w-4 h-4" />
-                            Your Message
+                            Your Message *
                           </span>
                         </label>
                         <textarea
                           name="message"
                           value={formData.message}
                           onChange={handleChange}
-                          required
                           rows={5}
-                          className="w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-black/50 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 focus:border-red-500 dark:focus:border-red-500 focus:ring-2 focus:ring-red-500/20 dark:focus:ring-red-500/30 transition-all duration-300 outline-none resize-none"
+                          className={`w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-black/50 backdrop-blur-sm border ${
+                            fieldErrors.message 
+                              ? 'border-red-500 focus:border-red-500' 
+                              : 'border-red-100/50 dark:border-red-900/30 focus:border-red-500'
+                          } focus:ring-2 focus:ring-red-500/20 dark:focus:ring-red-500/30 transition-all duration-300 outline-none resize-none`}
                           placeholder="Tell us about your project, requirements, and goals..."
                         />
+                        {fieldErrors.message && (
+                          <p className="mt-1 text-xs text-red-500">{fieldErrors.message}</p>
+                        )}
                       </div>
 
                       <motion.button
@@ -453,11 +529,7 @@ export default function ContactPage() {
                       >
                         {isSubmitting ? (
                           <span className="flex items-center justify-center gap-2">
-                            <motion.div
-                              animate={{ rotate: 360 }}
-                              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                              className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
-                            />
+                            <Loader className="w-5 h-5 animate-spin" />
                             Sending Message...
                           </span>
                         ) : (
@@ -477,7 +549,7 @@ export default function ContactPage() {
                 </div>
               </motion.div>
 
-              {/* Map & Additional Info */}
+              {/* FAQs */}
               <motion.div
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -485,9 +557,6 @@ export default function ContactPage() {
                 transition={{ duration: 0.8 }}
                 className="space-y-8"
               >
-                
-
-                {/* FAQs */}
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-br from-red-600/5 to-red-700/5 rounded-3xl blur-2xl" />
                   <div className="relative p-8 rounded-3xl bg-white/80 dark:bg-black/80 backdrop-blur-sm border border-red-100/50 dark:border-red-900/30 shadow-xl">
@@ -524,15 +593,47 @@ export default function ContactPage() {
                     </div>
                   </div>
                 </div>
-
               </motion.div>
             </div>
           </div>
         </section>
-
       </div>
       
       <FooterSection />
     </>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

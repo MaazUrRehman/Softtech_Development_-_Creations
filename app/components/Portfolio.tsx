@@ -128,7 +128,7 @@ export default function PortfolioSection() {
         title: "Zeeshan Portfolio",
         category: "branding",
         description: "Zeeshan's personal portfolio website built with Next.js and Tailwind CSS. The site showcases his projects, skills, and experience in a modern, responsive design. It features smooth animations, dark/light mode toggle, and a clean layout that highlights his work effectively.",
-        image: "/assets/projects/Zeeshan.PNG",
+        image: "/assets/projects/ZeeshanPortfolio.PNG",
         technologies: ["Next", "Tailwind"],
         stats: {
           orders: "1K+",

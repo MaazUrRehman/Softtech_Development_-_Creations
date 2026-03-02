@@ -74,7 +74,7 @@ export default function TestimonialsSection() {
       id: 5,
       name: "Bilal Ahmed",
       role: "Owner, Ahmed Electronics",
-      content: "E-commerce website aur Facebook Ads ke through hum电子产品 poore Pakistan mein bech rahe hain. Sales mein 300% izafa howa. Team ne jo product photography aur banners banaye hain, wo professional hain.",
+      content: "E-commerce website aur Facebook Ads ke through hum poore Pakistan mein bech rahe hain. Sales mein 300% izafa howa. Team ne jo product photography aur banners banaye hain, wo professional hain.",
       rating: 5,
       company: "Ahmed Electronics",
       project: "E-commerce + Social Media Ads",

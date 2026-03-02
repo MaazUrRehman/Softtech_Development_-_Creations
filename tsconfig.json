@@ -3,7 +3,7 @@
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
-    "skipLibCheck": true,
+    "skipLibCheck": true,  // This is already true
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -13,6 +13,10 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
+    "typeRoots": [  // Add this section
+      "./node_modules/@types",
+      "./src/types"
+    ],
     "plugins": [
       {
         "name": "next"
