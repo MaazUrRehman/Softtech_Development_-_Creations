@@ -57,7 +57,7 @@ export default function Header() {
               </div>
               <div>
                 <div className="text-xl font-bold text-black dark:text-white group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors duration-300">
-                  Softtech
+                  SoftTech
                 </div>
                 <div className="text-xs text-red-700 dark:text-red-400 uppercase group-hover:text-red-800 dark:group-hover:text-red-300 transition-colors duration-300">
                   Development & Creations
